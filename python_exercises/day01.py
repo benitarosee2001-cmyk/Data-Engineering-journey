@@ -28,3 +28,32 @@ hundreds = number // 100
 print(units)
 print(tens)
 print(hundreds)
+
+
+#Exercise 5
+x = input("x: ")
+y = input("y: ")
+total = x + y
+print(total)
+
+
+#Exercise 6
+s = "stray kids"
+print(len(s))
+print(s.upper)
+
+
+#Exercise 7
+price = float(input("price: "))
+discount = price * 9 / 100
+final = price - discount
+print(final)
+
+
+#Exercise 8
+a = 120
+b = 12.5
+c = True
+print(type(a))
+print(type(b))
+print(type(c))
