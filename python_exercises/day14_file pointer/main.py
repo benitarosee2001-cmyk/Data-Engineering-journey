@@ -10,12 +10,13 @@ with open("skill.txt", "r", encoding="utf8") as file:
 
 #Exercise 3
 with open("skill.txt", "r", encoding="utf8") as file:
-    file.seek(5)
+    file.read(5)
     print(file.tell())
 
 
 #Exercise 4
-with open("skill.txt", "r", encodig="utf8") as file:
+with open("skill.txt", "r", encoding="utf8") as file:
+    file.read()
     print(file.tell())
 
 
@@ -27,7 +28,7 @@ with open("skill.txt", "r", encoding="utf8") as file:
 
 #Exercise 6
 with open("skill.txt", "r", encoding="utf8") as file:
-    file.tell(10)
+    file.read(10)
     file.seek(0)
     print(file.readline())
 
@@ -44,7 +45,10 @@ with open("language.txt", "w", encoding="utf8") as file:
 
 #Exercise 8
 with open("language.txt", "r", encoding="utf8") as file:
+    file.read()
+    
     file.seek(0)
+    
     for line in file:
         print(line.strip())
 

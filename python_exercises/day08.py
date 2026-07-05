@@ -318,4 +318,5 @@ print(square(8))
 def func(name:str)->str:
     return f"Welcom {name}"
 
-print(func("Json"))
+print(func("Rose"))
+
