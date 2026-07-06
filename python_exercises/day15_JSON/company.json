@@ -1,0 +1,9 @@
+{
+    "company": "Open AI",
+    "employees": 1000,
+    "tools": [
+        "Python",
+        "SQL",
+        "Spark"
+    ]
+}
