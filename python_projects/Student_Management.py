@@ -37,7 +37,7 @@ def show_students():
 
         for student in students:
             print(f"Name: {student['name']}")
-            print(f"Age: {student['ave']}")
+            print(f"Age: {student['age']}")
             print(f"Grade: {student['grade']}")
             print("-" * 50)
 
@@ -51,7 +51,7 @@ def search_student():
         if student["name"].lower() == search.lower():
             print("\nStudent Found!")
             print(f"Name: {student['name']}")
-            print(f"Age: {student['ave']}")
+            print(f"Age: {student['age']}")
             print(f"Grade: {student['grade']}")
             found = True
             break
