@@ -72,7 +72,7 @@ def delete_task():
 
 def save_task():
     
-    with("todo.json", "w") as file:
+    with open("todo.json", "w", encoding = "utf8") as file:
         json.dump(tasks, file, indent=4)
 
         print("Saved.")
@@ -81,9 +81,9 @@ def load_task():
 
     global tasks
 
-    with("todo.json", "r") as file:
+    with open("todo.json", "r", encoding = "utf8") as file:
 
-        tasks = json.loasd(file)
+        tasks = json.load(file)
 
     print("Loaded.")
 
@@ -108,14 +108,17 @@ def main():
         elif choice == "2":
             show_task()
 
-        elif choice == "4":
+        elif choice == "3":
             mark_task()
 
-        elif choice == "5":
+        elif choice == "4":
             delete_task()
 
-        elif choice == "6":
+        elif choice == "5":
             save_task()
+
+        elif choice == "6":
+            load_task()
 
         elif choice == "7":
             print("Good Bye!")
