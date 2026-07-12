@@ -65,7 +65,7 @@ with open("skills.csv", "r", newline="", encoding="utf8") as file:
 import csv
 
 rows = [
-    ["Name", "Age"]
+    ["Name", "Age"],
     ["Benita", 24],
     ["Mahi", 30],
     ["Emma", 27],
@@ -126,7 +126,7 @@ with open("employees.csv", "w", newline="", encoding="utf8") as file:
     writer = csv.writer(file)
     writer.writerows(rows)
 
-with open("employees.csv", "r", newline="utf8") as file:
+with open("employees.csv", "r", encoding="utf8") as file:
     reader = csv.reader(file)
 
     for row in reader:
