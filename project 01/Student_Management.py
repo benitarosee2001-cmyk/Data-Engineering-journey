@@ -3,6 +3,7 @@ import json
 students = []
 
 def show_menu():
+
     print("===== Student Management =====")
     print("\n1.Add Student")
     print("2.Show Students")
@@ -11,9 +12,11 @@ def show_menu():
     print("5.Save to JSON")
     print("6.Load from JSON")
     print("7.Exit")
+    print("*" * 50)
 
 
 def add_student():
+
     name = input("Name: ")
     age = int(input("Age: "))
     grade = float(input("Grade: "))
@@ -30,8 +33,10 @@ def add_student():
 
 
 def show_students():
+
     if len(students) == 0:
         print("No students found")
+
     else:
         print("\n===== Students =====")
 
@@ -48,6 +53,7 @@ def search_student():
     found = False
 
     for student in students:
+
         if student["name"].lower() == search.lower():
             print("\nStudent Found!")
             print(f"Name: {student['name']}")
@@ -61,6 +67,7 @@ def search_student():
 
 
 def delete_student():
+
     delete = input("Student Name: ")
 
     found = False
@@ -127,5 +134,6 @@ def main():
 
         else:
             print("Invalid choice.")
+
 
 main()
