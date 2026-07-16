@@ -25,31 +25,26 @@ def add_student():
 
     name = input("Name: ")
 
-    for student in students:
-        if student['Name'].lower() == name.lower():
-            print("Student already exists.")
-            return
+    try:
+        age = int(input("Age: "))
+        grade = float(input("Grade: "))
 
-        try:
-            age = int(input("Age: "))
-            grade = float(input("Grade: "))
+    except ValueError:
+        print('Please enter valid numbers.')
+        return
 
-        except ValueError:
-            print('Please enter valid numbers.')
-            return
+    if grade < 0 or grade > 20:
+        print("Grade must be between 0 and 20.")
+        return
 
-        if grade < 0 or grade > 20:
-            print("Grade must be between 0 and 20.")
-            return
+    student = {
+        "Name" : name,
+        "Age" : age,
+        "Grade" : grade
+    }
 
-        student = {
-            "Name" : name,
-            "Age" : age,
-            "Grade" : grade
-        }
-
-        students.append(student)
-        print("Student added successfully.")
+    students.append(student)
+    print("Student added successfully.")
 
 
 def show_student():
@@ -187,7 +182,7 @@ def sort_student():
         print("No student found.")
         return
 
-    sorted_students = sorted(students, key=lambda student: students['Grade'], reverse=True)
+    sorted_students = sorted(students, key=lambda student: student['Grade'], reverse=True)
 
     for student in sorted_students:
 
@@ -247,11 +242,11 @@ def statistics():
     for student in students:
         grades.append(student['Grade'])
 
-        print("\n==== Statistics ====")
-        print(f"Toatal Student: {len(students)}")
-        print(f"Average Grade: {sum(grades)/len(grades)}")
-        print(f"Highest Grade: {max(grades)}")
-        print(f"Lowest: {min(grades)}")
+    print("\n==== Statistics ====")
+    print(f"Toatal Student: {len(students)}")
+    print(f"Average Grade: {sum(grades)/len(grades)}")
+    print(f"Highest Grade: {max(grades)}")
+    print(f"Lowest: {min(grades)}")
 
 
 def main():
@@ -279,7 +274,7 @@ def main():
             average_grade()
 
         elif choice == "7":
-            edit_student()
+            top_student()
 
         elif choice == "8":
             save_students()
@@ -300,6 +295,9 @@ def main():
             lowest_grade()
 
         elif choice == "14":
+            statistics()
+
+        elif choice == "15":
             print("Good Bye!")
             break
 
