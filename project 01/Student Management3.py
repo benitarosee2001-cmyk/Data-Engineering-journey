@@ -236,19 +236,19 @@ def main():
             delete_student()
 
         elif choice == "5":
-            save_students()
+            edit_student()
 
         elif choice == "6":
-            load_students()
+            average_grade()
 
         elif choice == "7":
             edit_student()
 
         elif choice == "8":
-            average_grade()
+            save_students()
 
         elif choice == "9":
-            top_student()
+            load_students()
 
         elif choice == "10":
             sort_student()
