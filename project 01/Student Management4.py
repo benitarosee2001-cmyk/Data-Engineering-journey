@@ -18,7 +18,8 @@ def show_menu():
     print("11.Count Student")
     print("12.Highest Grade")
     print("13.Lowest Grade")
-    print("14.Exit\n\n")
+    print("14.Statistics")
+    print("15.Exit\n\n")
 
 
 def add_student():
@@ -127,11 +128,11 @@ def edit_student():
     for student in students:
         if student['Name'].lower() == name.lower():
 
-            student['Name'] = input("Name: ")
+            student['Name'] = input("New Name: ")
 
             try:
-                student['Age'] = int(input("Age: "))
-                student['Grade'] = float(input("Grade: "))
+                student['Age'] = int(input("New Age: "))
+                student['Grade'] = float(input("New Grade: "))
 
             except ValueError:
                 print("Please enter valid nimber.")
@@ -243,7 +244,7 @@ def statistics():
         grades.append(student['Grade'])
 
     print("\n==== Statistics ====")
-    print(f"Toatal Student: {len(students)}")
+    print(f"Toatal Students: {len(students)}")
     print(f"Average Grade: {sum(grades)/len(grades)}")
     print(f"Highest Grade: {max(grades)}")
     print(f"Lowest: {min(grades)}")
