@@ -160,3 +160,83 @@ def save_student():
 
     print("Student saved successfully.")
 
+
+def load_student():
+
+    global students
+
+    try:
+        with open(FILE_NAME, "r", encoding="utf8") as file:
+            data = json.load(file)
+
+        students = []
+
+        for item in data:
+            student = Student(
+                item["Name"],
+                item["Age"],
+                item["Grade"]
+            )
+
+            students.append(student)
+        print("Student loaded successfully.")
+
+    except FileNotFoundError:
+        print("File not found.")
+
+
+def sort_student():
+
+    sorted_students = sorted(students, key=lambda student:student.grade, reverse=True)
+
+    print("\n========= Sorted Students ===========")
+
+    for student in sorted_students:
+        student.show_info()
+
+
+def count():
+
+    print(f"Total students: {len(students)}")
+
+
+def highest_grade():
+
+    if not students:
+        print("No student found.")
+        return
+
+    highest = max(students, key=lambda student:student.grade)
+
+    print("====== Highest Grade =======")
+    highest.show_info()
+
+
+def lowest_grade():
+
+    if not students:
+        print("No student found.")
+        return
+
+    lowest = min(students, key=lambda student:student.grade)
+
+    print("======= Lowest Grade =======")
+    lowest.show_info()
+
+
+def statistics():
+
+    if not students:
+        print("No student found.")
+        return
+
+    grades = []
+
+    for student in students:
+        grades.append(student.grade)
+
+    print("\n====== Statistics =======")
+    print(f"Toatal students: {len(students)}")
+    print(f"Average Grade: {sum(grades)/len(grades)}")
+    print(f"Highest Grade: {max(grades)}")
+    print(f"Lowest Grade: {min(grades)}")
