@@ -1,4 +1,4 @@
-#import json
+import json
 
 FILE_NAME = "students.json"
 
@@ -80,3 +80,83 @@ def show_students():
     
     for student in students:
         student.show_info()
+
+
+def search_student():
+
+    name = input("Name: ")
+
+    for student in students:
+        if student.name.lower() == name.lower():
+            student.show_info()
+            return
+
+
+    print("Student not found.")
+
+
+def delete_student():
+
+    name = input("Name: ")
+
+    for student in students:
+        if student.name.lower() == name.lower():
+            students.remove(student)
+            print("Student deleted successfully.")
+            return
+
+    print("Student not found.")
+
+
+def edit_student():
+
+    name = input("Name: ")
+
+    for student in students:
+        if student.name.lower() == name.lower():
+            age = int(input("Age: "))
+            grade = float(input("Grade: "))
+            student.update(age, grade)
+
+            print("Student updated.")
+            return
+
+    print("Student not found.")
+
+
+def average_student():
+
+    total = 0
+
+    for student in students:
+        total += student.grade
+
+    average = total / len(students)
+
+    print(f"Average Grade: {average}")
+
+
+def top_student():
+
+    top = students[0]
+
+    for student in students:
+        if student.grade > top.grade:
+            top = student
+
+    print("====== Top Student ======")
+    top.show_info()
+
+
+def save_student():
+
+    data = []
+
+    for student in students:
+        data.append(student.to_dict())
+
+    with open(FILE_NAME, "w", encoding = "utf8") as file:
+        json.dump(data, file, indent=4)
+
+    print("Student saved successfully.")
+
