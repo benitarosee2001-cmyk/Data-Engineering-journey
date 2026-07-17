@@ -66,7 +66,7 @@ def add_student():
     age = int(input("Age: "))
     grade = float(input("Grade: "))
 
-    new_student = student(name,age,grade)
+    new_student = Student(name,age,grade)
 
     students.append(new_student)
     print("Student added successfully.")
@@ -124,7 +124,7 @@ def edit_student():
     print("Student not found.")
 
 
-def average_student():
+def average_grade():
 
     total = 0
 
@@ -236,7 +236,69 @@ def statistics():
         grades.append(student.grade)
 
     print("\n====== Statistics =======")
-    print(f"Toatal students: {len(students)}")
+    print(f"Total students: {len(students)}")
     print(f"Average Grade: {sum(grades)/len(grades)}")
     print(f"Highest Grade: {max(grades)}")
     print(f"Lowest Grade: {min(grades)}")
+
+
+def main():
+
+    while True:
+
+        show_menu()
+
+        choice = input("Choice: ")
+
+        if choice == "1":
+            add_student()
+
+        elif choice == "2":
+            show_students()
+
+        elif choice == "3":
+            search_student()
+
+        elif choice == "4":
+            delete_student()
+
+        elif choice == "5":
+            edit_student()
+
+        elif choice == "6":
+            average_grade()
+
+        elif choice == "7":
+            top_student()
+
+        elif choice == "8":
+            save_student()
+
+        elif choice == "9":
+            load_student()
+
+        elif choice == "10":
+            sort_student()
+
+        elif choice == "11":
+            count()
+
+        elif choice == "12":
+            highest_grade()
+
+        elif choice == "13":
+            lowest_grade()
+
+        elif choice == "14":
+            statistics()
+
+        elif choice == "15":
+            print("Good Bye!")
+            break
+
+        else:
+            print("Invalid choice.")
+
+
+if __name__ == "__main__":
+    main()

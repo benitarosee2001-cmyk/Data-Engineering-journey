@@ -1,7 +1,12 @@
 [
     {
         "Name": "ali",
-        "Age": 23,
-        "Grade": 100.0
+        "Age": 22,
+        "Grade": 17.0
+    },
+    {
+        "Name": "sara",
+        "Age": 24,
+        "Grade": 20.0
     }
 ]
