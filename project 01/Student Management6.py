@@ -87,7 +87,7 @@ def add_student():
         grade = input("Grade: ")
 
         new_student = student(
-            generate_id(),
+        generate_id(),
             name,
             age,
             grade
@@ -248,3 +248,111 @@ def sort_student():
 
     for student in sorted_students:
         student.show_info()
+
+
+def count_student():
+
+    print(f"Total Students: {len(students)}")
+
+
+def highest_grade():
+
+    if not students:
+        print("No student found.")
+        return
+    
+    highest = max(students, key=lambda student:student.grade)
+    print("======= Highest Grade =======")
+
+    highest.show_info()
+
+
+def lowest_grade():
+
+    if not students:
+        print("No student found.")
+        return
+    
+    lowest = min(students, key=lambda student:student.grade)
+    print("======== Lowest Grade ========")
+    lowest.show_info()
+
+
+def statistics():
+
+    if not students:
+        print("No student found.")
+        return
+
+    grades = []
+
+    for student in students:
+        grades.append(student.grade)
+
+    print("======== STATISTICE =======")
+    print(f"Total Student: {len(students)}")
+    print(f"Average Grade: {sum(grades)/len(grades)}")
+    print(f"Highest Grade: {max(grades)}")
+    print(f"lowet Grade: {min(grades)}")
+
+
+def main():
+
+    while True:
+
+        show_menu()
+
+        choice = input("Choice: ")
+
+        if choice == "1":
+            add_student()
+
+        elif choice == "2":
+            show_student()
+
+        elif choice == "3":
+            search_student()
+
+        elif choice == "4":
+            delete_student()
+
+        elif choice == "5":
+            edit_student()
+
+        elif choice == "6":
+            average_student()
+
+        elif choice == "7":
+            top_student()
+
+        elif choice == "8":
+            save_student()
+
+        elif choice == "9":
+            load_student()
+
+        elif choice == "10":
+            sort_student()
+
+        elif choice == "11":
+            count_student()
+
+        elif choice == "12":
+            highest_grade()
+
+        elif choice == "13":
+            lowest_grade()
+
+        elif choice == "14":
+            statistics()
+
+        elif choice == "15":
+            print("Good Bye!")
+            break
+
+        else:
+            print("Invalid choice.")
+
+
+if __name__ == "__main__":
+    main()
