@@ -236,3 +236,15 @@ def load_student():
         print("File not found.")
 
 
+def sort_student():
+
+    if not students:
+        print("No student found.")
+        return
+    
+    sorted_students = sorted(students, key=lambda student:student.grade, reverse=True)
+
+    print("====== Sorted Student ======")
+
+    for student in sorted_students:
+        student.show_info()
