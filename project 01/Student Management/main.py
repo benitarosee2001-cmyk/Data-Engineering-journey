@@ -35,9 +35,11 @@ def add_student():
         if student.name().lower() == name.lower():
             print("Student already exists.")
             return
-        
-    age = int(input("Age: "))
-    grade = float(input("Grade: "))
+    try:    
+        age = int(input("Age: "))
+        grade = float(input("Grade: "))
+    except ValueError:
+        print("Invalid input.")
 
     new_student = Student(
         generate_id(),
@@ -285,6 +287,7 @@ def main():
 
         elif choice == "15":
 
+            save_student(students)
             print("Good Bye!")
             break
 
