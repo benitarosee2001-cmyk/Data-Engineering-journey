@@ -1,8 +1,8 @@
-from Student import Student
 from database import save_student, load_student
+from Student import Student
 from utils import generate_id, update_last_id
 
-students = load_student
+students = load_student()
 update_last_id(students)
 
 
@@ -239,7 +239,7 @@ def main():
 
         elif choice == "8":
 
-            save_student(students)
+            save_student()
 
         elif choice == "9":
 
