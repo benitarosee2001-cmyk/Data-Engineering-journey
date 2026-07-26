@@ -1,4 +1,4 @@
-from database import save_student, load_student
+from database import load_student, save_student
 from Student import Student
 from utils import generate_id, update_last_id
 
@@ -85,14 +85,18 @@ def delete_student():
         delete_id = int(input("Student ID: "))
 
         for student in students:
+
             if student.id == delete_id:
+
                 students.remove(student)
-                print("Student deleted successfully.")
+
+                print("Student deleted.")
                 return
-        
+
         print("Student not found.")
 
     except ValueError:
+
         print("Invalid ID.")
 
 
@@ -103,19 +107,22 @@ def edit_student():
         edit_id = int(input("Student ID: "))
 
         for student in students:
+
             if student.id == edit_id:
 
-                age = int(input("Age: "))
-                grade = float(input("Grade: "))
+                age = int(input("New Age: "))
+                grade = float(input("New Grade: "))
 
                 student.update(age, grade)
+
                 print("Student updated.")
                 return
-        
+
         print("Student not found.")
 
     except ValueError:
-        print("Inavalid ID.")
+
+        print("Invalid ID.")
 
 
 def average_grade():
@@ -123,10 +130,10 @@ def average_grade():
     if not students:
         print("No student found.")
         return
-    
-    average = sum(students.grade for student in students) / len(students)
 
-    print(f"Average Geade: {average:.2f}")
+    average = sum(student.grade for student in students) / len(students)
+
+    print(f"Average Grade: {average:.2f}")
 
 
 def top_student():
@@ -134,10 +141,10 @@ def top_student():
     if not students:
         print("No student found.")
         return
-    
-    top = max(students, key=lambda student:student.grade)
 
-    print("\n========== Top Student ===========")
+    top = max(students, key=lambda student: student.grade)
+
+    print("\n===== Top Student =====")
     top.show_info()
 
 
@@ -146,10 +153,14 @@ def sort_student():
     if not students:
         print("No student found.")
         return
-    
-    sorted_students = sorted(students, key=lambda student:student.grade, reverse=True)
 
-    print("\n======== Sorted students =========")
+    sorted_students = sorted(
+        students,
+        key=lambda student: student.grade,
+        reverse=True
+    )
+
+    print("\n===== Sorted Students =====")
 
     for student in sorted_students:
         student.show_info()
@@ -165,12 +176,14 @@ def highest_grade():
     if not students:
         print("No student found.")
         return
-    
-    high = max(students, key=lambda student: student.grade)
 
-    print("\n========= Highest Grade ==========")
+    highest = max(
+        students,
+        key=lambda student: student.grade
+    )
 
-    high.show_info()
+    print("\n===== Highest Grade =====")
+    highest.show_info()
 
 
 def lowest_grade():
@@ -179,11 +192,13 @@ def lowest_grade():
         print("No student found.")
         return
 
-    low = min(students, key=lambda student:student.grade)
+    lowest = min(
+        students,
+        key=lambda student: student.grade
+    )
 
-    print("\n========== Lowest Grade ============")
-
-    low.show_info()
+    print("\n===== Lowest Grade =====")
+    lowest.show_info()
 
 
 def statistics():
@@ -191,23 +206,25 @@ def statistics():
     if not students:
         print("No student found.")
         return
-    
+
     grades = [student.grade for student in students]
 
-    print("\n========== Statistics ===========")
-    print(f"Total Students: {len(students)}")
-    print(f"Average Grade: {sum(grades) / len(grades):.2f}")
-    print(f"Highest Grade: {max(grades)}")
-    print(f"lowest Grade: {min(grades)}")
+    print("\n===== Statistics =====")
+    print(f"Total Students : {len(students)}")
+    print(f"Average Grade  : {sum(grades) / len(grades):.2f}")
+    print(f"Highest Grade  : {max(grades)}")
+    print(f"Lowest Grade   : {min(grades)}")
 
 
 def main():
+
+    global students
 
     while True:
 
         show_menu()
 
-        choice = int(input("Choose: "))
+        choice = input("Choice: ")
 
         if choice == "1":
 
@@ -239,11 +256,9 @@ def main():
 
         elif choice == "8":
 
-            save_student()
+            save_student(students)
 
         elif choice == "9":
-
-            global students
 
             students = load_student()
             update_last_id(students)
@@ -277,5 +292,6 @@ def main():
 
             print("Invalid choice.")
 
-if __name__ == "__main__":
+
+if __name__ == "main":
     main()
