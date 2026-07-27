@@ -1,9 +1,6 @@
-from database import save_student, load_student
-
+from database import load_student, save_student
 from student import Student
-
 from utils import generat_id, update_last_id
-
 
 students = load_student
 update_last_id(students)
@@ -19,15 +16,12 @@ def show_menu():
 4. Delete Student
 5. Edit Student
 6. Average Grade
-7. Top Student
-8. Save Students
-9. Load Students
-10. Sort Students
-11. Count Students
-12. Highest Grade
-13. Lowest Grade
-14. Statistics
-15. Exit
+7. Highest Grade
+8. Lowest Grade
+9. Save Students
+10. Load Students
+11. Statistics
+12. Exit
 ========================================
 """)
 
@@ -128,3 +122,118 @@ def delete_student():
 
     except ValueError:
         print("Invalid ID.")
+
+
+def average_grade():
+
+    if not students:
+        print("No student found.")
+        return
+
+    average = sum(student.grade for student in students) / len(students)
+
+    print(f"Average Grade: {average:.2f}")
+
+
+def highest_grade():
+
+    if not students:
+        print("No student found.")
+        return
+
+    highest = max(students, key=lambda student: student.grade)
+
+    print("\n======= Highest Grade =======")
+
+    highest.show_info()
+
+
+def lowest_grade():
+
+    if not students:
+        print("No student found.")
+        return
+
+    lowest = min(students, key=lambda student:student.grade)
+
+    print("\n======== Lowest Grade =========")
+
+    lowest.show_info()
+
+
+def student_count():
+
+    print(f"Total students: {len(students)}")
+
+
+def statistics():
+
+    if not students:
+            print("No student found.")
+            return
+
+    grades = [student.grade for student in students]
+
+    print("\n======== Statistics =========")
+    print(f"Average Grade: {sum(grades) / len(grades):.2f}")
+    print(f"Highest Grade: {max(grades)}")
+    print(f"lowest Grade: {min(grades)}")
+    print(f"Student Count: {len(students)}")
+
+
+def  main():
+
+    global students
+
+    while True:
+
+        show_menu()
+
+        choice = input("Choose: ")
+
+        if choice == "1":
+            add_student()
+
+        elif choice == "2":
+            show_student()
+
+        elif choice == "3":
+            search_student()
+
+        elif choice == "4":
+            delete_student()
+
+        elif choice == "5":
+            edit_student()
+
+        elif choice == "6":
+            average_grade()
+
+        elif choice == "7":
+            highest_grade()
+
+        elif choice == "8":
+            lowest_grade()
+
+        elif choice == "9":
+
+            save_student(students)
+
+        elif choice == "10":
+
+            students = load_student()
+            update_last_id(students)
+
+        elif choice == "11":
+            statistics()
+
+        elif choice == "12":
+            print("Good Bye.")
+            break
+
+        else:
+            print("Invalid input.")
+
+
+if __name__ == "__main__":
+    main()
