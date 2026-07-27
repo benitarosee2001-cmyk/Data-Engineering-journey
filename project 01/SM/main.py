@@ -2,7 +2,7 @@ from database import load_student, save_student
 from student import Student
 from utils import generat_id, update_last_id
 
-students = load_student
+students = load_student()
 update_last_id(students)
 
 
@@ -35,11 +35,11 @@ def add_student():
             print("Student already exists.")
             return
 
-        try:
+    try:
             age = int(input("Age: "))
             grade = float(input("Grade: "))
 
-        except ValueError:
+    except ValueError:
             print("Invalid input.")
 
             new_student = Student(

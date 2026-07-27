@@ -11,10 +11,10 @@ def save_student(students):
     for student in students:
         data.append(student.to_dict())
 
-        with open(FILE_NAME, "w", encoding="utf8") as file:
-            json.dump(data, file, indent=4)
+    with open(FILE_NAME, "w", encoding="utf8") as file:
+        json.dump(data, file, indent=4)
 
-        print("Student saved successfully.")
+    print("Student saved successfully.")
 
 
 def load_student():
