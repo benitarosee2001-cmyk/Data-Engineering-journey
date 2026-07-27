@@ -55,7 +55,7 @@ print("python" in s.split())
 s = input("sentence: ")
 words = s.split()[0]
 word = s.split()[-1]
-print(" | ".join([words , word]))
+print(f"{words} | {word}")
 
 
 #Exercise 11
@@ -83,7 +83,7 @@ date = int(input("date: "))
 parts = s.split("/")
 p = parts[0]
 pa = parts[1]
-print("-".join([p, pa]))
+print(f"{p}-{pa}")
 
 
 #Exercise 15
@@ -108,7 +108,7 @@ print(parts[-1])
 tag1 = input("tag1: ")
 tag2 = input("tag2: ")
 tag3 = input("tag3: ")
-print(" , ".join([tag1, tag2, tag3]))
+print(f"{tag1} , {tag2} , {tag3}")
 
 
 #Exercise 19
@@ -183,7 +183,7 @@ path = input("path: ")
 words = path.split(" / ")
 w = words[0]
 wo = words[-1]
-print(" | ".join([w, wo]))
+print(f"{w} | {wo}")
 
 
 #Exercise 31

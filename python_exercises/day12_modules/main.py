@@ -1,9 +1,9 @@
-from calc import add
-from string_utils import upper_text as u
 import make_lower
-import square_area
 import person as p
+import square_area
+from calc import add
 from person import perso
+from string_utils import upper_text as u
 
 print(add(3, 5))
 print(u("stray kids"))

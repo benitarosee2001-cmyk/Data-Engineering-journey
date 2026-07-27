@@ -227,8 +227,7 @@ def load_student():
                 )
 
                 students.append(student)
-                if item["ID"] > student_id:
-                    student_id = item["ID"]
+                student_id = max(student_id, item["ID"])
 
                 print("Students load successfully.")
         

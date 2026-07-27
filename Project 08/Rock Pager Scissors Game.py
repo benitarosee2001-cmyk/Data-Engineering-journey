@@ -18,7 +18,7 @@ def rock_pager_scissors():
         user_choice = "Rock"
 
     elif choice == "2":
-        user_choice == "Pager"
+        user_choice == "Pager"  # noqa: B015
 
     elif user_choice == "3":
         user_choice = "Scissors"
