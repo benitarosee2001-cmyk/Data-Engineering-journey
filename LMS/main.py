@@ -1,7 +1,6 @@
 from books import Book
-from database import save_book, load_book
+from database import load_book, save_book
 from utils import generate_id, update_last_id
-
 
 books = load_book()
 update_last_id(books)
@@ -9,7 +8,7 @@ update_last_id(books)
 
 def show_menu():
 
-    print("\n========== Menu ==========")
+    print("\n============ Menu ============")
     print("1.Add Book")
     print("2.Show Books")
     print("3.Search Book by ID")
@@ -20,7 +19,7 @@ def show_menu():
     print("8.Load Book")
     print("9.Statistics")
     print("10.Exit")
-    print("_" * 50)
+    print("_" * 90)
 
 
 def add_book():
@@ -33,24 +32,24 @@ def add_book():
             print("This book already exists.")
             return
 
-        try:
+    try:
 
-            book_id = int(input("Book ID: "))
-            pages = int(input("Pages: "))
+        book_id = int(input("Book ID: "))
+        pages = int(input("Pages: "))
 
-        except ValueError:
-            print("Invalid input.")
+    except ValueError:
+        print("Invalid input.")
 
-            new_book = Book(
+        new_book = Book(
                 book_id,
                 title,
                 author,
                 pages
             )
 
-            books.append(new_book)
+        books.append(new_book)
 
-        print(f"Book add successfully. ID = {new_book.id}")
+    print(f"Book add successfully. ID = {new_book.id}")
 
 
 def show_book():
@@ -132,7 +131,7 @@ def statistics():
 
     if not books:
 
-        print("Not book found.")
+        print("Not Book found.")
         return
 
     pages = [books.pages for book in books]
