@@ -41,4 +41,7 @@ def load_student():
     except FileNotFoundError:
         print("File not found.")
 
+    except json.JSONDecodeError:
+        print("Invalid json data.")
+
     return students
