@@ -1,37 +1,44 @@
 import os
 import shutil
 
+
+def get_category(extension):
+
+    if extension == [".jpg", ".png"]:
+        return "Images"
+
+    elif extension == ".mp4":
+        return "Videos"
+
+    elif extension == ".mp3":
+        return "Music"
+
+    elif extension == [".txt", ".pdf", ".docx"]:
+        return "Documents"
+
+    elif extension == ".py":
+        return "Python"
+
+    elif extension == ".zip":
+        return "Archives"
+
+    else:
+        return "Others"
+
 folder = os.path.join(os.path.dirname(__file__), "TestFolder")
 
 files = os.listdir(folder)
 
 for file in files:
 
+    source = os.path.join(folder, file)
+
     if not os.path.isfile(os.path.join(folder, file)):
         continue
 
-    name, extension = os.path.splitext(file)
+    extension = os.path.splitext(file)[1].lower()
 
-    if extension in [".jpg", ".png"]:
-        category = "Images"
-
-    elif extension in ".mp4":
-        category = "Videos"
-
-    elif extension in ".mp3":
-        category = "Music"
-
-    elif extension in [".txt", ".pdf", "docx"]:
-        category = "Documents"
-
-    elif extension in ".py":
-        category = "Python"
-
-    elif extension in ".zip":
-        category = "Archives"
-
-    else:
-        category = "Others"
+    category = get_category(extension)
 
     category_folder = os.path.join(folder, category)
 
@@ -40,6 +47,10 @@ for file in files:
     source =os.path.join(folder, file)
 
     destination = os.path.join(category_folder, file)
+
+    if os.path.exists(destination):
+        print(f"Skipped: {file} already exists.")
+        continue
 
     shutil.move(source, destination)
 
